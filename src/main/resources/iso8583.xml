@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- NOTE: 
+		THIS FILE IS AN EXAMPLE  FOR CHINA UNION-PAY POS TEMINAL
+-->
+
+<!-- structure see com.rockagen.upos.define.IsoPredefine -->
+<define>
+
+	<!-- Headers -->
+	<headers>
+		<header type="0210"/>
+		<header type="0110"/>
+	</headers>
+	<!-- Templates -->
+	<templates>
+		<template type="0210">
+		</template>
+		<template type="0820">
+			<field num="33" type="LLVAR" length="2" value="01"></field>
+		</template>
+		<template type="0110">
+		</template>
+	</templates>
+
+	<!-- Parsers -->
+
+	<parsers>
+		<!-- The server, this to read the request -->
+		<parser type="0200">
+			<field num="2" type="LLVAR" />
+			<field num="3" type="NUMERIC" length="6" />
+			<field num="4" type="AMOUNT" />
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="12" type="TIME" />
+			<field num="13" type="DATE4_MD" />
+			<field num="15" type="DATE4_MD" />
+			<field num="18" type="NUMERIC" length="4" />
+			<field num="22" type="NUMERIC" length="3" />
+			<field num="25" type="NUMERIC" length="2" />
+			<field num="32" type="LLVAR" />
+			<field num="33" type="LLVAR" />
+			<field num="37" type="ALPHA" length="12" />
+			<field num="39" type="ALPHA" length="2" />
+			<field num="41" type="ALPHA" length="8" />
+			<field num="42" type="ALPHA" length="15" />
+			<field num="48" type="LLLVAR" />
+			<field num="49" type="NUMERIC" length="3" />
+			<!-- bytes -->
+			<field num="52" type="BINARY" length="8" />
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="54" type="LLLVAR" />
+			<field num="59" type="LLLVAR" />
+			<field num="60" type="LLLVAR" />
+			<field num="63" type="LLLVAR" />
+			<field num="100" type="LLVAR" />
+			<field num="103" type="LLVAR" />
+			<!-- bytes -->
+			<field num="128" type="BINARY" length="8" />
+		</parser>
+
+		<!-- The server, this to read the request -->
+		<parser type="0100">
+			<field num="3" type="NUMERIC" length="6" />
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="12" type="TIME" />
+			<field num="13" type="DATE4_MD" />
+			<field num="15" type="DATE4_MD" />
+			<field num="18" type="NUMERIC" length="4" />
+			<field num="22" type="NUMERIC" length="3" />
+			<field num="25" type="NUMERIC" length="2" />
+			<field num="32" type="LLVAR" />
+			<field num="33" type="LLVAR" />
+			<field num="37" type="ALPHA" length="12" />
+			<field num="39" type="ALPHA" length="2" />
+			<field num="41" type="ALPHA" length="8" />
+			<field num="42" type="ALPHA" length="15" />
+			<field num="48" type="LLLVAR" />
+			<field num="49" type="NUMERIC" length="3" />
+			<!-- bytes -->
+			<field num="52" type="BINARY" length="8" />
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="54" type="LLLVAR" />
+			<field num="59" type="LLLVAR" />
+			<field num="60" type="LLLVAR" />
+			<field num="61" type="LLLVAR" />
+			<field num="100" type="LLVAR" />
+			<field num="103" type="LLVAR" />
+			<!-- bytes -->
+			<field num="128" type="BINARY" length="8" />
+		</parser>
+		
+		
+			<!-- The server, this to read the request -->
+		<parser type="0800">
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="33" type="LLVAR" length="11"/>
+			<field num="39" type="ALPHA" length="2" />
+			<!-- If first digit is 1 means that PIK,2 means MAK -->
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="70" type="NUMERIC" length="3" />
+			<field num="96" type="BINARY" length="8" />
+			<!-- bytes -->
+			<field num="128" type="BINARY" length="8" />
+		</parser>
+		
+			<!-- The server, this to response the request -->
+		<parser type="0810">
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="33" type="LLVAR" length="11"/>
+			<field num="39" type="ALPHA" length="2" />
+			<!-- If first digit is 1 means that PIK,2 means MAK -->
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="70" type="NUMERIC" length="3" />
+			<field num="96" type="BINARY" length="8" />
+			<!-- bytes -->
+			<field num="128" type="BINARY" length="8" />
+		</parser>
+		
+			<!-- The server, this to read the request -->
+		<parser type="0820">
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="33" type="LLVAR" length="11"/>
+			<field num="39" type="ALPHA" length="2" />
+			<!-- If first digit is 1 means that PIK,2 means MAK -->
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="70" type="NUMERIC" length="3" />
+		</parser>
+		
+			<!-- The server, this to response the request -->
+		<parser type="0830">
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="33" type="LLVAR" length="11"/>
+			<field num="39" type="ALPHA" length="2" />
+			<!-- If first digit is 1 means that PIK,2 means MAK -->
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="70" type="NUMERIC" length="3" />
+		</parser>
+
+
+		<!-- The server, this to write the response -->
+		<parser type="0210">
+			<field num="2" type="LLVAR" length="19" />
+			<field num="3" type="NUMERIC" length="6" />
+			<field num="4" type="AMOUNT" />
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="12" type="TIME" />
+			<field num="13" type="DATE4_MD" />
+			<field num="15" type="DATE4_MD" />
+			<field num="18" type="NUMERIC" length="4" />
+			<field num="22" type="NUMERIC" length="3" />
+			<field num="25" type="NUMERIC" length="2" />
+			<field num="32" type="LLVAR" />
+			<field num="33" type="LLVAR" />
+			<field num="37" type="ALPHA" length="12" />
+			<field num="39" type="ALPHA" length="2" />
+			<field num="41" type="ALPHA" length="8" />
+			<field num="42" type="ALPHA" length="15" />
+			<field num="48" type="LLLVAR" />
+			<field num="49" type="ALPHA" length="3" />
+			<!-- bytes -->
+			<field num="52" type="BINARY" length="8" />
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="54" type="LLLVAR" />
+			<field num="59" type="LLLVAR" />
+			<field num="60" type="LLLVAR" />
+			<field num="63" type="LLLVAR" />
+			<field num="100" type="LLVAR" />
+			<field num="103" type="LLVAR" />
+			<!-- bytes -->
+			<field num="128" type="BINARY" length="8" />
+		</parser>
+		
+		
+		<!-- The server, this to read the request -->
+		<parser type="0110">
+			<field num="3" type="NUMERIC" length="6" />
+			<field num="7" type="DATE10" />
+			<field num="11" type="NUMERIC" length="6" />
+			<field num="12" type="TIME" />
+			<field num="13" type="DATE4_MD" />
+			<field num="15" type="DATE4_MD" />
+			<field num="18" type="NUMERIC" length="4" />
+			<field num="22" type="NUMERIC" length="3" />
+			<field num="25" type="NUMERIC" length="2" />
+			<field num="32" type="LLVAR" />
+			<field num="33" type="LLVAR" />
+			<field num="37" type="ALPHA" length="12" />
+			<field num="39" type="ALPHA" length="2" />
+			<field num="41" type="ALPHA" length="8" />
+			<field num="42" type="ALPHA" length="15" />
+			<field num="48" type="LLLVAR" />
+			<field num="49" type="NUMERIC" length="3" />
+			<!-- bytes -->
+			<field num="52" type="BINARY" length="8" />
+			<field num="53" type="NUMERIC" length="16" />
+			<field num="54" type="LLLVAR" />
+			<field num="59" type="LLLVAR" />
+			<field num="60" type="LLLVAR" />
+			<field num="61" type="LLLVAR" />
+			<field num="100" type="LLVAR" />
+			<field num="103" type="LLVAR" />
+			<!-- bytes -->
+			<field num="128" type="BINARY" length="8" />
+		</parser>
+	</parsers>
+</define>
