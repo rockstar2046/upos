@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- NOTE: 
-		THIS FILE IS AN EXAMPLE  FOR CHINA UNION-PAY POS TEMINAL
--->
-
-<!-- structure see com.rockagen.upos.define.IsoPredefine -->
-<define>
+<define
+xmlns="http://s.rockagen.com/schema/iso8583/define"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://s.rockagen.com/schema/iso8583/define iso8583.xsd">
 
 	<!-- Headers -->
 	<headers>
-		<header type="0210"/>
+		<header type="0210">abc</header>
 		<header type="0110"/>
+		<header type="0100">abc</header>
 	</headers>
 	<!-- Templates -->
 	<templates>
 		<template type="0210">
 		</template>
 		<template type="0820">
-			<field num="33" type="LLVAR" length="2" value="01"></field>
+			<field num="33" type="LLVAR" length="9">ABC123456</field>
 		</template>
 		<template type="0110">
 		</template>

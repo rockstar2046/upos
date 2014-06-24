@@ -1,11 +1,34 @@
-##upos
+/*
+ * Copyright 2014 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.rockagen.upos;
 
-**upos** is a lightweight [ISO8583][] message sdk.
+import java.util.Map;
 
+import org.junit.Test;
 
-###example
-You shoud create iso8583.xml file at first(You will find the  iso8583.xsd  file from source code).
-```java
+import com.rockagen.commons.util.CommUtil;
+import com.rockagen.upos.message.ReadIsoMessage;
+import com.rockagen.upos.message.WriteIsoMessage;
+
+/**
+ * A demo test
+ * @author RA
+ */
+public class TestDemo {
+
 	// stuff (message type,bitmap...)
 	static String hex = "30313030A23A448188C1801000000000020000013331303030303032313732333233353131323639303232333233353130323137303231373630313130313239323038313130303030313130384D303030303038303233323335313132363930325445524E304131303032303031363239303032333435363033384644303131303030303030303030302020202020202020203030303030303030343438373623313536303134303030303030303030333030303031313332313030303030303031B33FCBFFD612A316";
 
@@ -35,7 +58,7 @@ You shoud create iso8583.xml file at first(You will find the  iso8583.xsd  file 
 	 * [128]:........
 	 * </pre>
 	 */
-	 
+
 	@Test
 	public void testDemo() {
 
@@ -84,25 +107,25 @@ You shoud create iso8583.xml file at first(You will find the  iso8583.xsd  file 
 
 	}
 
-```
+	private void initializeMap(WriteIsoMessage wim, Map<Integer, byte[]> map,
+			ReadIsoMessage rim) {
 
-:)
+		for (int i = 2; i <= 128; i++) {
+			if (hasBytes(rim.getIsoValue(i))) {
+				map.put(i, rim.getIsoValue(i));
+			}
+		}
+	}
 
+	private boolean hasBytes(byte[] bytes) {
+		if (bytes != null && bytes.length > 0) {
+			return true;
+		}
 
-##Contributing
-[Pull requests][] are welcome,see the [contributor guidelines][] for details.
+		return false;
+	}
 
-##Download
-Go to [download][] jar file.
-
-##License 
-The commons-lib under version 2.0 of the [Apache License][].
-
-
-
-
-[ISO8583]: https://en.wikipedia.org/wiki/ISO_8583 "wiki"
-[Pull requests]: https://help.github.com/articles/using-pull-requests "Pull requests"
-[Apache License]: http://www.apache.org/licenses/LICENSE-2.0 "Apache License, Version 2.0"
-[download]: http://code.taobao.org/svn/upos/trunk/download/ "download"
-[contributor guidelines]: https://github.com/rockagen/upos/blob/master/CONTRIBUTING.md "contributor guidelines"
+	private void print(Object x) {
+		System.out.println(x);
+	}
+}

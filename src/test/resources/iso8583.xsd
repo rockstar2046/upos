@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://s.rockagen.com/schema/iso8583/define"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://s.rockagen.com/schema/iso8583/define"
+	elementFormDefault="qualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+
+	<xs:annotation>
+		<xs:documentation>
+		<![CDATA[
+			Defines the elements used in the upos  support for  iso8583 message parse.
+		]]>
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="define">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="headers" minOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="header" minOccurs="0" maxOccurs="9999"
+								type="hdtype">
+								<xs:annotation>
+									<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message header.
+		]]>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="templates" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="template" minOccurs="0" maxOccurs="9999"
+								type="tltype">
+								<xs:annotation>
+									<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message template.
+		]]>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="parsers" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+
+							<xs:element name="parser" minOccurs="0" maxOccurs="9999"
+								type="pstype">
+								<xs:annotation>
+									<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message parser
+		]]>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="hdtype">
+
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attributeGroup ref="mtype" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="tltype">
+
+		<xs:complexContent>
+			<xs:extension base="fieldtype">
+				<xs:attributeGroup ref="mtype" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+
+	<xs:complexType name="pstype">
+		<xs:complexContent>
+			<xs:extension base="fieldtype">
+				<xs:attributeGroup ref="mtype" />
+			</xs:extension>
+		</xs:complexContent>
+
+	</xs:complexType>
+
+	<xs:attributeGroup name="mtype">
+		<xs:attribute name="type" use="required">
+			<xs:annotation>
+				<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message transaction type.
+			example: 0100,0200...
+		]]>
+				</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9]{4}" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+
+
+	<xs:complexType name="fieldtype">
+		<xs:sequence>
+			<xs:element name="field" minOccurs="0" maxOccurs="128">
+				<xs:annotation>
+					<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message field.
+			for example:
+			# PROCESSING CODE
+			<field num="3" type="NUMERIC" length="6" />
+		]]>
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="num" use="required">
+								<xs:annotation>
+									<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message field index.
+			example: 
+			2 -> PRIMARY ACCOUNT NUMBER
+			3 -> PROCESSING CODE
+			4 -> AMOUNT, TRANSACTION
+			
+		]]>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="0" />
+										<xs:maxInclusive value="128" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="type" use="required">
+								<xs:annotation>
+									<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message field type.
+		]]>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="NUMERIC" />
+										<xs:enumeration value="ALPHA" />
+										<xs:enumeration value="LLVAR" />
+										<xs:enumeration value="LLLVAR" />
+										<xs:enumeration value="DATE10" />
+										<xs:enumeration value="DATE4_YM" />
+										<xs:enumeration value="DATE4_MD" />
+										<xs:enumeration value="TIME" />
+										<xs:enumeration value="AMOUNT" />
+										<xs:enumeration value="BINARY" />
+									</xs:restriction>
+
+								</xs:simpleType>
+							</xs:attribute>
+
+
+							<xs:attribute name="length" use="optional">
+
+								<xs:annotation>
+									<xs:documentation>
+		<![CDATA[
+			Defines the elements used for iso8583 message field length,this attribute is optional.
+		]]>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="0" />
+										<xs:maxInclusive value="999" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+</xs:schema>

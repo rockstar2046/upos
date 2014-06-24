@@ -195,6 +195,18 @@ public class IsoPredefine {
 				return false;
 			return true;
 		}
+		
+		/**
+		 * To string.
+		 * 
+		 * @return the string
+		 */
+		@Override
+		public String toString() {
+			return "IsoHeader["+type+"] value={"+value+"}";
+		}
+		
+		
 
 	}
 
@@ -293,6 +305,29 @@ public class IsoPredefine {
 				return false;
 			return true;
 		}
+		
+		/**
+		 * To string.
+		 * 
+		 * @return the string
+		 */
+		@Override
+		public String toString() {
+			String s_fields="empty";
+			if(fields!=null){
+				StringBuffer sb=new StringBuffer();
+				sb.append("##START##");
+				sb.append(",");
+				for(IsoField field:fields){
+					sb.append(field);
+					sb.append(", ");
+				}
+				sb.append("##END##");
+				s_fields=sb.toString();
+			}
+			 
+			return "IsoTemplate["+type+"] IsoFields={"+s_fields+"}";
+		}
 	}
 
 	/**
@@ -389,6 +424,30 @@ public class IsoPredefine {
 			} else if (!type.equals(other.type))
 				return false;
 			return true;
+		}
+		
+		
+		/**
+		 * To string.
+		 * 
+		 * @return the string
+		 */
+		@Override
+		public String toString() {
+			String s_fields="empty";
+			if(fields!=null){
+				StringBuffer sb=new StringBuffer();
+				sb.append("##START##");
+				sb.append(",");
+				for(IsoField field:fields){
+					sb.append(field);
+					sb.append(", ");
+				}
+				sb.append("##END##");
+				s_fields=sb.toString();
+			}
+			 
+			return "IsoParser["+type+"] IsoFields={"+s_fields+"}";
 		}
 	}
 
