@@ -100,5 +100,5 @@ Thanks!
 
 [help documentation]: http://help.github.com/send-pull-requests
 [Gradle]: http://www.gradle.org/ "Gradle"
-[Gradle usage]: http://www.gradle.org/docs/1.12/userguide/userguide.html "Gradle usage"
+[Gradle usage]: http://www.gradle.org/docs/current/userguide/userguide_single.html "Gradle usage"
 [contributors]: https://github.com/rockagen/upos/graphs/contributors "see contributors"
