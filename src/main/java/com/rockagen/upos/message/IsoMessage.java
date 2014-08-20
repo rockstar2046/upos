@@ -120,7 +120,7 @@ public abstract class IsoMessage {
 	 * </p>
 	 * 
 	 * @param type
-	 * @return {@link IsoPredefine.IsoParser}
+	 * @return {@link IsoPredefineIsoParser}
 	 */
 	public IsoPredefine.IsoParser geIsoParser(String type) {
 		if (predefine == null) {

@@ -180,12 +180,12 @@ public class ReadIsoMessage extends IsoMessage {
 				case LLVAR:
 					byte[] llen = new byte[2];
 					buf.get(llen);
-					bytelen = Integer.valueOf(new String(llen,charset));
+					bytelen = Integer.parseInt(new String(llen,charset));
 					break;
 				case LLLVAR:
 					byte[] lllen = new byte[3];
 					buf.get(lllen);
-					bytelen = Integer.valueOf(new String(lllen,charset));
+					bytelen = Integer.parseInt(new String(lllen,charset));
 					break;
 				default:
 					log.warn(
