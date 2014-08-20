@@ -1,3 +1,6 @@
+import java.lang.invoke.LambdaForm.Compiled;
+import java.security.acl.Group;
+
 description = 'upos'
 
 repositories {
@@ -62,8 +65,9 @@ artifacts {
 }
 
 dependencies {
-    compile group: 'com.rockagen', name: 'commons-lib', version: '0.1.4'
-    testCompile group: 'junit', name: 'junit', version: '4.8.2'
+    compile group: "com.rockagen", name: "commons-lib", version: "0.1.4"
+	compile group: "org.bouncycastle",name: "bcprov-jdk16",version: "1.46"
+    testCompile group: "junit", name: "junit", version: "4.8.2"
 }
 
 test {

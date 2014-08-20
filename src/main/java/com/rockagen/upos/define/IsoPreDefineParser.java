@@ -268,8 +268,8 @@ public class IsoPreDefineParser {
 				length = "0";
 
 			IsoType itype = IsoType.valueOf(type);
-			IsoField header = new IsoField(Integer.valueOf(num), itype,
-					Integer.valueOf(length), value);
+			IsoField header = new IsoField(Integer.parseInt(num), itype,
+					Integer.parseInt(length), value);
 			return header;
 		}
 
