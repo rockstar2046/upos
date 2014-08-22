@@ -2,7 +2,7 @@
 <define
 xmlns="http://s.rockagen.com/schema/iso8583/define"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://s.rockagen.com/schema/iso8583/define iso8583.xsd">
+xsi:schemaLocation="http://upos.rockagen.com/schema/iso8583/define iso8583.xsd">
 
 	<!-- Headers -->
 	<headers>
